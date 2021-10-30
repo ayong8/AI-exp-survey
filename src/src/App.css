@@ -1,5 +1,7 @@
 .App {
-  text-align: center;
+  text-align: left;
+  width: 90%;
+  margin: auto;
 }
 
 .App-logo {
@@ -35,4 +37,73 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.textAlignLeft {
+  text-align: left !important;
+}
+
+.displayBlock {
+  display: block !important;
+}
+
+.displayFlex {
+  display: flex !important;
+}
+
+.positionFixed {
+  position: fixed;
+}
+
+.floatLeft {
+  float: left;
+}
+
+.floatRight {
+  float: right;
+}
+
+.width30 {
+  width: 60%;
+}
+
+.width40 {
+  width: 40%;
+}
+
+.width60 {
+  width: 50%;
+}
+
+.width90 {
+  width: 90%;
+}
+
+.maxWidth40 {
+  max-width: 40%;
+}
+
+.minWidth10px {
+  min-width: 10px !important;
+}
+
+.marginAuto {
+  margin: auto !important;
+}
+
+.paddingLeft1 {
+  padding-left: 1px;
+}
+
+.paddingLeft50 {
+  padding-left: 50px;
+}
+
+.backgroundColorLightGray {
+  background-color: #efefef !important;
+}
+
+.scenario {
+  background-color: #efefef !important;
+  padding: 15px;
 }
