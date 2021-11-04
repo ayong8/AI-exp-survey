@@ -1,4 +1,5 @@
 import React, { useRef, useEffect } from "react";
+import _ from 'lodash';
 import * as d3 from 'd3';
 import * as Survey from "survey-react";
 import "survey-react/modern.css";
@@ -12,43 +13,24 @@ Survey.surveyStrings.saveAgainButton = "Try to save again.";
 
 const Main = ({
   contents,
-  contentsFromSurveyJs
+  contentsFromSurveyJs,
+  shuffledEs
 }) => {
   const ref = useRef(null);
+  let survey = new Survey.Model(contents);
 
-  useEffect(() => {
-    d3.select('#sp_102').select('.sv-page').append('div').lower();
-    // console.log('getattr: ', d3.selectAll('.sv-question').filter(d => d['name']=='featureTable'))
-  });
-
-  let survey = new Survey.Model(contentsFromSurveyJs);
-  
-
-  // survey.onComplete.add(function (sender) {
-  //   console.log('select surveyResult: ', document.querySelector("#surveyResult"))
-  //   document.querySelector("#surveyResult").textContent =
-  //     "Result JSON:\n" + JSON.stringify(sender.data, null, 3);
-  // });
-
-  function sendDataToServer(survey) {
-    survey.sendResult('21c9eb9a-0641-4371-8dea-e9309c7850b8');
-  }
 
   survey.surveyShowDataSaving = true;
-  survey.getPlainData({ calculations: [{ propertyName: "tag" }] });
-
   survey.onUpdatePanelCssClasses.add(function (survey, options, i) {
     let classes = options.cssClasses.panel;
+    console.log('options.panel.name: ', options.panel.name)
 
-    console.log("custom css-class added: ", options.panel.name);
-    console.log("option for panel: ", options);
-
-    if (options.panel.name == 'panelExpRanking') {
+    if ((options.panel.name == 'panelExpRanking1') || (options.panel.name == 'panelExpRanking2')) {
       classes.content += " displayFlex";
     }
 
-    if (options.panel.name == 'panelRanking') {
-      classes.content += " floatRight width30";
+    if ((options.panel.name == 'panelRanking1') || (options.panel.name == 'panelRanking2')) {
+      classes.content += " floatRight width50";
     }
     
   });
@@ -56,8 +38,7 @@ const Main = ({
   survey.onUpdateQuestionCssClasses.add(function (survey, options, i) {
     let classes = options.cssClasses;
 
-    console.log("custom css-class added: ", options.question.name);
-    console.log("option: ", options);
+    console.log("options.question.name: ", options.question.name);
 
     classes.mainRoot += " " + options.question.name;
     classes.mainRoot += " sv_qstn";
@@ -66,55 +47,40 @@ const Main = ({
     classes.item += " sq-item";
     classes.label += " sq-label";
 
-    if ((options.question.getType() == 'radiogroup') || (options.question.getType() == 'checkbox')) {
+    // by name
+    if (options.question.name == 'gender') {
       classes.column += " displayBlock paddingLeft50 maxWidth40";
       classes.item += " textAlignLeft";
+    } else if (options.question.name == 'education') {
+      classes.item += " displayBlock paddingLeft50 maxWidth40 textAlignLeft";
+    } else if (options.question.name == 'decisionMakingStyle') {
+      classes.cell += " paddingLeft1";
+    } else if (options.question.name == 'explanationStrategies') {
+      classes.cellText += " textAlignLeft";
+    } else if ((options.question.name == 'explanationDisplay1') || (options.question.name == 'explanationDisplay2')) {
+      classes.mainRoot += " floatLeft width40 positionFixed overflowYScroll height600";
+      classes.cellText += " textAlignLeft";
+    } else if (options.question.name == 'featureTable') {
+      classes.cell += ""
     }
 
-    if (options.question.getType() == 'matrix') {
+    // by type
+    if (options.question.getType() == 'checkbox') {
+      classes.item += " displayBlock paddingLeft50 maxWidth40 textAlignLeft";
+    } else if (options.question.getType() == 'matrix') {
       classes.content += " width90";
-      classes.cellHeader += " maxWidth50px"
-      classes.cell += " minWidth10px"
+      classes.cell += " minWidth100px"
       classes.headerCell += " maxWidth50px"
     }
-
-    if (options.question.name == 'decisionMakingStyle') {
-      classes.cell += " paddingLeft1";
-    }
-
-    if (options.question.name == 'scenarioDescription') {
-      // classes.mainRoot += " backgroundColorLightGray";
-    }
-
-    if (options.question.name == 'explanationStrategies') {
-      classes.cellText += " textAlignLeft";
-    }
-
-    if (options.question.name == 'explanationDisplay') {
-      classes.mainRoot += " floatLeft width40 positionFixed";
-      classes.cellText += " textAlignLeft";
-    }
-
-    // if (options.question.isRequired) {
-    //   classes.title += " sq-title-required";
-    //   classes.root += " sq-root-required";
-    // }
-
-    // if (options.question.getType() === "checkbox") {
-    //   classes.root += " sq-root-cb";
-    // }
   });
-
-  console.log('survey data: ', survey.data);
 
   survey
     .onComplete
     .add((sender) => {
         let survey = sender;
         let surveyData = sender.data;
-        surveyData.info = { dd: 'ddd' }
-        console.log('sender: ', sender.data)
-        sender.data = {ddddddd: 'ddddddd'}
+
+        sender.data.extraInfo = { expMapping: shuffledEs.map(e => _.pick(e, ['idx', 'name']))}
         survey.sendResult('21c9eb9a-0641-4371-8dea-e9309c7850b8');
     });
 

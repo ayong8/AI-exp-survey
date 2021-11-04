@@ -63,8 +63,8 @@
   float: right;
 }
 
-.width30 {
-  width: 60%;
+.width50 {
+  width: 50%;
 }
 
 .width40 {
@@ -83,8 +83,12 @@
   max-width: 40%;
 }
 
-.minWidth10px {
-  min-width: 10px !important;
+.minWidth100px {
+  min-width: 100px !important;
+}
+
+.padding0px10px {
+  padding: 0 10px !important;
 }
 
 .marginAuto {
@@ -106,4 +110,16 @@
 .scenario {
   background-color: #efefef !important;
   padding: 15px;
+}
+
+.overflowYScroll {
+  overflow-y: scroll !important;
+}
+
+.scrollLeft {
+  direction: rtl;
+}
+
+.height600 {
+  height: 600px !important;
 }
