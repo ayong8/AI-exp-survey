@@ -69,19 +69,18 @@ const Main = ({
       classes.item += " displayBlock paddingLeft50 maxWidth40 textAlignLeft";
     } else if (options.question.getType() == 'matrix') {
       classes.content += " width90";
-      classes.cell += " minWidth100px"
-      classes.headerCell += " maxWidth50px"
+      classes.cell += " minWidth100px padding5px"
+      classes.headerCell += " maxWidth50px padding5px"
     }
   });
 
   survey
     .onComplete
-    .add((sender) => {
-        let survey = sender;
-        let surveyData = sender.data;
-
-        sender.data.extraInfo = { expMapping: shuffledEs.map(e => _.pick(e, ['idx', 'name']))}
-        survey.sendResult('21c9eb9a-0641-4371-8dea-e9309c7850b8');
+    .add((result) => {
+        let surveyResult = result['data']
+        surveyResult['expMapping'] = shuffledEs.map(e => _.pick(e, ['idx', 'name']))
+        result['data'] = surveyResult;
+        result.sendResult('21c9eb9a-0641-4371-8dea-e9309c7850b8');
     });
 
   return (

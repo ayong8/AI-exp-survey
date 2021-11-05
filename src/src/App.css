@@ -87,6 +87,10 @@
   min-width: 100px !important;
 }
 
+.padding5px {
+  padding: 5px !important;
+}
+
 .padding0px10px {
   padding: 0 10px !important;
 }
