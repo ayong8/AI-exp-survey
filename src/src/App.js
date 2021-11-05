@@ -529,7 +529,7 @@ function App() {
                   {
                     type: "ranking",
                     name: "overallPreference",
-                    title: "How explanation do you prefer in an overall sense?                     Rank the explanations based on your preferences by dragging up and down the items.",
+                    title: "Which explanation do you prefer in an overall sense?                     Rank the explanations based on your preferences by dragging up and down the items.",
                     isRequired: true,
                     choices: [
                       "Explanation A",
@@ -616,11 +616,6 @@ function App() {
     context: 'loan',
     decision: 'negative',
     agent: 'human',
-  }
-
-  const jsonFromSurveyJs = {
-    surveyId: 'e873a25d-0288-4e8a-bb0b-4d1287798588',
-    surveyPostId: '21c9eb9a-0641-4371-8dea-e9309c7850b8',
   }
 
   const questionsToUpdate = [
