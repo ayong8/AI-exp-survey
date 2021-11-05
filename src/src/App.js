@@ -56,6 +56,7 @@ function App() {
             type: "radiogroup",
             name: "gender",
             title: "How would you describe your gender identity?",
+            isRequired: true,
             choices: [
               "Male",
               "Female",
@@ -68,6 +69,7 @@ function App() {
             type: "checkbox",
             name: "ethnicity",
             title: "What categories describe you? Select all choices that apply.",
+            isRequired: true,
             choices: [
               "American Indian or Alaska Native",
               "Asian",
@@ -83,6 +85,7 @@ function App() {
             type: "radiogroup",
             name: "education",
             title: "What is the highest degree of level of school you have completed?",
+            isRequired: true,
             choices: [
               "No schooling completed",
               "To 8th grade",
@@ -99,6 +102,7 @@ function App() {
             type: "matrix",
             name: "decisionMakingStyle",
             title: "How do you describe your decision-making styles?",
+            isRequired: true,
             columns: [
               {
                 value: 1,
@@ -193,6 +197,7 @@ function App() {
             type: "matrix",
             name: "decisionMakingStyle",
             title: "How do you perceive the given situation with respect to the properties listed above?",
+            isRequired: true,
             columns: [
               {
                 value: 1,
@@ -234,6 +239,7 @@ function App() {
             type: "matrix",
             name: "question1",
             title: "How do you perceive yourself with respect to the following statement?",
+            isRequired: true,
             columns: [
               {
                 value: 1,
@@ -405,6 +411,7 @@ function App() {
                     type: "ranking",
                     name: "question2",
                     title: "How much difficult is it for you to distinguish important and unimportant information for your decision-making from these explanations?",
+                    isRequired: true,
                     choices: [
                       {
                         value: "item1",
@@ -436,6 +443,7 @@ function App() {
                     type: "ranking",
                     name: "question3",
                     title: "How much confident you feel that you get the rationale on why the decision was made with these explanations?",
+                    isRequired: true,
                     choices: [
                       {
                         value: "item1",

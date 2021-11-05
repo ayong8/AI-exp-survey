@@ -8,7 +8,7 @@ import "survey-react/modern.css";
 Survey.StylesManager.applyTheme("modern");
 Survey.surveyStrings.savingData = "Please wait. We are validating and saving your response.";
 Survey.surveyStrings.savingDataError = "That is my own text on error.";
-Survey.surveyStrings.savingDataSuccess = "That is my own text on success.";
+Survey.surveyStrings.savingDataSuccess = "Success!";
 Survey.surveyStrings.saveAgainButton = "Try to save again.";
 
 const Main = ({
