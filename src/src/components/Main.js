@@ -30,7 +30,7 @@ const Main = ({
     }
 
     if ((options.panel.name == 'panelRanking1') || (options.panel.name == 'panelRanking2')) {
-      classes.content += " floatRight width50";
+      classes.content += " floatRight width55";
     }
     
   });
