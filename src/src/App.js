@@ -195,7 +195,7 @@ function App() {
           },
           {
             type: "matrix",
-            name: "decisionMakingStyle",
+            name: "situationProperty",
             title: "How do you perceive the given situation with respect to the properties listed above?",
             isRequired: true,
             columns: [
@@ -237,7 +237,7 @@ function App() {
           },
           {
             type: "matrix",
-            name: "question1",
+            name: "attribution",
             title: "How do you perceive yourself with respect to the following statement?",
             isRequired: true,
             columns: [
@@ -706,7 +706,7 @@ function App() {
       <div className="App">
         <Main 
           contents={updatedJsonAllContents}
-          contentsFromSurveyJs={jsonFromSurveyJs}
+          dataForContext={dataForContext}
           shuffledEs={shuffledEs}
         />
       </div>

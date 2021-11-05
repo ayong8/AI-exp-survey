@@ -13,7 +13,7 @@ Survey.surveyStrings.saveAgainButton = "Try to save again.";
 
 const Main = ({
   contents,
-  contentsFromSurveyJs,
+  dataForContext,
   shuffledEs
 }) => {
   const ref = useRef(null);
@@ -80,7 +80,7 @@ const Main = ({
         let surveyResult = result['data']
         surveyResult['expMapping'] = shuffledEs.map(e => _.pick(e, ['idx', 'name']))
         result['data'] = surveyResult;
-        result.sendResult('21c9eb9a-0641-4371-8dea-e9309c7850b8');
+        result.sendResult(dataForContext.surveyPostId);
     });
 
   return (
