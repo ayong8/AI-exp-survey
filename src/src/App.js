@@ -414,27 +414,27 @@ function App() {
                     isRequired: true,
                     choices: [
                       {
-                        value: "item1",
+                        value: "Explanation A",
                         text: "Explanation A"
                       },
                       {
-                        value: "item2",
+                        value: "Explanation B",
                         text: "Explanation B"
                       },
                       {
-                        value: "item3",
+                        value: "Explanation C",
                         text: "Explanation C"
                       },
                       {
-                        value: "item4",
+                        value: "Explanation D",
                         text: "Explanation D"
                       },
                       {
-                        value: "item5",
+                        value: "Explanation E",
                         text: "Explanation E"
                       },
                       {
-                        value: "item6",
+                        value: "Explanation F",
                         text: "Explanation F"
                       }
                     ]
@@ -446,27 +446,27 @@ function App() {
                     isRequired: true,
                     choices: [
                       {
-                        value: "item1",
+                        value: "Explanation A",
                         text: "Explanation A"
                       },
                       {
-                        value: "item2",
+                        value: "Explanation B",
                         text: "Explanation B"
                       },
                       {
-                        value: "item3",
+                        value: "Explanation C",
                         text: "Explanation C"
                       },
                       {
-                        value: "item4",
+                        value: "Explanation D",
                         text: "Explanation D"
                       },
                       {
-                        value: "item5",
+                        value: "Explanation E",
                         text: "Explanation E"
                       },
                       {
-                        value: "item6",
+                        value: "Explanation F",
                         text: "Explanation F"
                       }
                     ]
