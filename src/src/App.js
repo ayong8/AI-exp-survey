@@ -575,7 +575,7 @@ function App() {
                   },
                   {
                     type: "ranking",
-                    name: "helpful",
+                    name: "trust",
                     title: "How do you evaluate the explanations to help you trust the decision-making process?                     Rank the explanations based on your preferences by dragging up and down the items.",
                     isRequired: true,
                     choices: [
@@ -601,20 +601,6 @@ function App() {
                       "Explanation F"
                     ]
                   },
-                  {
-                    type: "ranking",
-                    name: "useful",
-                    title: "How do you evaluate the explanations to be useful to achieve your goal?                     Rank the explanations based on your preferences by dragging up and down the items.",
-                    isRequired: true,
-                    choices: [
-                      "Explanation A",
-                      "Explanation B",
-                      "Explanation C",
-                      "Explanation D",
-                      "Explanation E",
-                      "Explanation F"
-                    ]
-                  }
                 ]
               }
             ]
