@@ -11,7 +11,7 @@
       "contrastive_o": "You were denied a loan because you have no annual income, while Person A was granted a loan since she was employed with an annual income of $32,500 more than you.",
       "contrastive_t": "Two years ago you were able to be granted a loan because you were employed with an annual income of more than $40,000, while at this time you are unemployed with no annual income and we cannot grant you a loan.",
       "case_based_homo": "The most similar case that was denied a loan is that of Person B. Person B’s credit history also indicates there was no delay in paying off loans in the past and they have a credit score of 600, which is categorized as good, with a similar amount of credit and balance, but unemployed and no annual income. You and Person B are both female and single, in the middle 40s.",
-      "case_based_hetero": "Compared to your case, the most typical (average) case B who was denied a loan, has a lower credit score by 150, which is categorized as good as well, has a credit amounting to $1,000 higher than you, and is single. Other statuses are the same as yours."
+      "case_based_hetero": "Compared to your case, the most typical (average) case B who was denied a loan, has a lower credit score by 150, which is categorized as good as well, has a credit amounting to $1,000 higher than you, and is single."
     },
     "features": [
       { "feature": "Delay in paying off", "value": "No" },

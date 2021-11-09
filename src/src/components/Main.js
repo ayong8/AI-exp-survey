@@ -18,7 +18,40 @@ const Main = ({
 }) => {
   const ref = useRef(null);
   let survey = new Survey.Model(contents);
+  let timeEl = document.getElementById("timeEl");
+  let timerId = null;
+  let timeRecord = {};
 
+  const renderTime = (val) => {
+    if(!timeEl) return;
+    let hours = Math.floor(val / 3600);
+    let minutes = Math.floor((val - (hours*3600)) / 60);
+    let seconds = Math.floor(val % 60);
+    let timeText = hours + ":" + minutes + ":" + seconds;
+    timeEl.innerHTML = timeText;
+  }
+
+  const timerCallback = () => {
+    let page = survey.currentPage;
+    if(!page) return;
+    let valueName = "pageNo" + survey.pages.indexOf(page);
+    let seconds = survey.getValue(valueName);
+    if(seconds == null) seconds = 0;
+    else seconds ++;
+    survey.setValue(valueName, seconds);
+    
+    timeRecord[valueName] = seconds;
+    renderTime(seconds)
+  }
+
+  timerCallback();
+  timerId = window.setInterval(function(){
+    timerCallback();
+  }, 1000);
+
+  survey.onCurrentPageChanged.add(function(){
+    timerCallback();
+  });
 
   survey.surveyShowDataSaving = true;
   survey.onUpdatePanelCssClasses.add(function (survey, options, i) {
@@ -77,9 +110,12 @@ const Main = ({
   survey
     .onComplete
     .add((result) => {
-        let surveyResult = result['data']
-        surveyResult['expMapping'] = shuffledEs.map(e => _.pick(e, ['idx', 'name']))
+        let surveyResult = result['data'];
+        surveyResult['expMapping'] = shuffledEs.map(e => _.pick(e, ['idx', 'name']));
+        surveyResult['timeSpent'] = timeRecord;
         result['data'] = surveyResult;
+
+        clearInterval(timerId);
         result.sendResult(dataForContext.surveyPostId);
     });
 

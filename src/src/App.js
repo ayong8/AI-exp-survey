@@ -6,6 +6,12 @@ import data from './data/data.json';
 
 
 function App() {
+  const setting = {
+    context: 'loan',
+    decision: 'negative',
+    agent: 'human',
+  }
+
   const expTypes = [
     'complete',
     'counterfactual',
@@ -611,12 +617,6 @@ function App() {
       }
     ]
   };
-
-  const setting = {
-    context: 'loan',
-    decision: 'negative',
-    agent: 'human',
-  }
 
   const questionsToUpdate = [
     { pIdx: 3, qIdx: 1, inPanel: false, pName: 'page3', qName: 'explanationStrategies' },
