@@ -37,7 +37,7 @@ function App() {
               {
                 type: "html",
                 name: "introSection1",
-                html: "<p style='font-size: 1.3rem; font-weight: 500'>In this survey, we will ask you to evaluate different explanation strategies.                     This survey is designed to study how different ways of explaining AI-assisted decisions (i.e., why was I denied a loan approval?) are effective in providing the rationales on a decision.                     The survey consists of four parts:                     <ul style='font-size: 1.1rem'>                    <li> <b>Demographic survey</b>: we will ask about basic demographic information                     <li> <b>Decision-making scenario</b>: we will illustrate a scenario on a AI-assisted decision-making context where you were                     given a decision based on your qualification listed in a table. </li>                    <li> <b>Explanation strategies</b>: you will read explanations on why you were given the decision in the scenario, which are written with different strategies. </li>                    <li> <b>Rating</b>: Given the explanations, you will evaluate how those explanations are effective in multiple perspectives.                    </li>                     </p>"
+                html: "<p style='font-size: 1.3rem; font-weight: 500'>In this survey, we will ask you to evaluate different explanation strategies.                     This survey is designed to study how different ways of explaining AI-assisted decisions (i.e., why was I denied a loan approval?) are effective in providing the rationales on a decision.                     The survey consists of four parts:                     <ul style='font-size: 1.1rem'>                    <li> <b>Demographic survey</b>: we will ask about basic demographic information                     <li> <b>Decision-making scenario</b>: we will illustrate a scenario on an AI-assisted decision-making context where you were                     given a decision based on your qualification listed in a table. </li>                    <li> <b>Explanation strategies</b>: you will read explanations on why you were given the decision in the scenario, which are written with different strategies. </li>                    <li> <b>Rating</b>: Given the explanations, you will evaluate how those explanations are effective in multiple perspectives.                    </li>                     </p>"
               }
             ]
           }
@@ -54,7 +54,7 @@ function App() {
               {
                 type: "html",
                 name: "introSection1",
-                html: "<h3 style='text-align: left'>In this section, we will ask you to evaluate explanation strategies.                     First, we will illustrate a scenario on a AI-assisted decision-making context where you were                     given a decision based on your qualification listed in a table.                     Second, you will read a set of explanations with different strategies reasoning why the decision was made,                     and evaluate how those explanations are effective in multiple perspectives.</h3>"
+                html: "<h3 style='text-align: left'>In this section, we will ask you basic demographic information about gender, ethnicity, education, and decision-making style.</h3>"
               }
             ]
           },
@@ -168,7 +168,7 @@ function App() {
               {
                 type: "html",
                 name: "introSection2",
-                html: "<h3 style='text-align: left'>In this section, we will ask you to evaluate explanation strategies.                     First, we will illustrate a scenario on a AI-assisted decision-making context where you were                     given a decision based on your qualification listed in a table.                     Second, you will read a set of explanations with different strategies reasoning why the decision was made,                     and evaluate how those explanations are effective in multiple perspectives.</h3>"
+                html: "<h3 style='text-align: left'>In this section, we will ask you to vividly imagine a decision-making situation. We will 1) illustrate a scenario on a AI-assisted decision-making context where you were given a decision and 2) list your status on which the decision was made by the AI system. Please answer the following questions based on your perception on the given scenario and the state of your thinking process.</h3>"
               }
             ]
           },
@@ -297,7 +297,7 @@ function App() {
               {
                 type: "html",
                 name: "income_intro",
-                html: "<h3 style='text-align: left'>Assume that an AI-assisted system                     provides the textual explanation upon a user's request asking the rationale                     behind the decision. The following choices are a set of natural language                     explanations with different strategies. (Read through the explanations in this page.                       You will evaluate these explanations in the next page)</h3>"
+                html: "<h3 style='text-align: left'>Assume that you were given a natural language explanation upon your request asking the rationale behind the decision. The following choices are a set of possible explanations with different strategies. (Read through the explanations in this page. You will evaluate these explanations in the next pages.)</h3>"
               }
             ]
           },
