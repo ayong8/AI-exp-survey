@@ -63,7 +63,7 @@ function App() {
               type: "radiogroup",
               name: "gender",
               title: "How would you describe your gender identity?",
-              isRequired: false,
+              isRequired: true,
               choices: [
                 "Male",
                 "Female",
@@ -76,7 +76,7 @@ function App() {
               type: "checkbox",
               name: "ethnicity",
               title: "What categories describe you? Select all choices that apply.",
-              isRequired: false,
+              isRequired: true,
               choices: [
                 "American Indian or Alaska Native",
                 "Asian",
@@ -92,7 +92,7 @@ function App() {
               type: "radiogroup",
               name: "education",
               title: "What is the highest degree of level of school you have completed?",
-              isRequired: false,
+              isRequired: true,
               choices: [
                 "No schooling completed",
                 "To 8th grade",
@@ -109,7 +109,7 @@ function App() {
               type: "matrix",
               name: "decisionMakingStyle",
               title: "How do you describe your decision-making styles?",
-              isRequired: false,
+              isRequired: true,
               columns: [
                 {
                   value: 1,
@@ -204,7 +204,7 @@ function App() {
               type: "matrix",
               name: "situationProperty",
               title: "How do you perceive the given situation and decision regarding the properties listed below?",
-              isRequired: false,
+              isRequired: true,
               columns: [
                 {
                   value: 1,
@@ -246,7 +246,7 @@ function App() {
               type: "matrix",
               name: "attribution",
               title: "Given the situation where you are being notified of AI-assisted decision, how do you perceive yourself regarding the following statement?",
-              isRequired: false,
+              isRequired: true,
               columns: [
                 {
                   value: 1,
@@ -429,6 +429,7 @@ function App() {
                       type: "rating",
                       name: "question1",
                       title: "How difficult is the information covered in the explanations overall for you to understand? (from 1 (very easy) to 5 (very difficult))",
+                      isRequired: true,
                       minRateDescription: "",
                       maxRateDescription: ""
                     },
@@ -436,7 +437,7 @@ function App() {
                       type: "ranking",
                       name: "question2",
                       title: "How difficult is each explanation for you to distinguish important and unimportant information for your decision-making from these explanations? Rank the explanations in order from most to least difficulty (by dragging up and down the items).",
-                      isRequired: false,
+                      isRequired: true,
                       choices: [
                         {
                           value: "Explanation A",
@@ -468,7 +469,7 @@ function App() {
                       type: "ranking",
                       name: "question3",
                       title: "How did each explanation enhance my understanding of why you were given the decision? Rank the explanations in order from most to least beneficial.",
-                      isRequired: false,
+                      isRequired: true,
                       choices: [
                         {
                           value: "Explanation A",
@@ -555,7 +556,7 @@ function App() {
                       type: "ranking",
                       name: "overallPreference",
                       title: "Which explanation do you prefer in an overall sense? Rank the explanations based on your preferences.",
-                      isRequired: false,
+                      isRequired: true,
                       choices: [
                         "Explanation A",
                         "Explanation B",
@@ -579,7 +580,7 @@ function App() {
                       type: "ranking",
                       name: "sufficientlyDetailedAndComplete",
                       title: "The explanation is sufficient detailed and complete (Rank the explanations in order from most to least detailed and complete).",
-                      isRequired: false,
+                      isRequired: true,
                       choices: [
                         "Explanation A",
                         "Explanation B",
@@ -593,7 +594,7 @@ function App() {
                       type: "ranking",
                       name: "understandable",
                       title: "From the explanation, I have better understanding of why I was given the decision. (Rank the explanations in order from most to least understandable).",
-                      isRequired: false,
+                      isRequired: true,
                       choices: [
                         "Explanation A",
                         "Explanation B",
@@ -607,7 +608,7 @@ function App() {
                       type: "ranking",
                       name: "trust",
                       title: "The explanation lets me trust the system (Rank the explanations in order from most to least trustworthy).",
-                      isRequired: false,
+                      isRequired: true,
                       choices: [
                         "Explanation A",
                         "Explanation B",
@@ -621,7 +622,7 @@ function App() {
                       type: "ranking",
                       name: "useful",
                       title: "The explanation is actionable, that is, it helps me know what further actions or decisions I can make (Rank the explanations in order from most to least actionable).",
-                      isRequired: false,
+                      isRequired: true,
                       choices: [
                         "Explanation A",
                         "Explanation B",
