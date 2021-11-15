@@ -63,7 +63,7 @@ const Main = ({
     }
 
     if ((options.panel.name == 'panelRanking1') || (options.panel.name == 'panelRanking2')) {
-      classes.content += " floatRight width55";
+      classes.content += " floatRight overflowYScroll maxHeight500";
     }
     
   });
@@ -91,7 +91,7 @@ const Main = ({
     } else if (options.question.name == 'explanationStrategies') {
       classes.cellText += " textAlignLeft";
     } else if ((options.question.name == 'explanationDisplay1') || (options.question.name == 'explanationDisplay2')) {
-      classes.mainRoot += " floatLeft width40 positionFixed overflowYScroll height600";
+      classes.mainRoot += " floatLeft";
       classes.cellText += " textAlignLeft";
     } else if (options.question.name == 'featureTable') {
       classes.cell += ""

@@ -75,6 +75,10 @@
   width: 50%;
 }
 
+.width70 {
+  width: 70%;
+}
+
 .width90 {
   width: 90%;
 }
@@ -85,6 +89,10 @@
 
 .minWidth100px {
   min-width: 100px !important;
+}
+
+.maxHeight500 {
+  max-height: 500px !important;
 }
 
 .padding5px {
