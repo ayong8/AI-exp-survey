@@ -38,7 +38,7 @@ function App() {
                 {
                   type: "html",
                   name: "introSection1",
-                  html: `<p style='font-size: 1.3rem; font-weight: 500'>In this survey, we will ask you to evaluate different explanation strategies. This survey is designed to study how different ways of explaining AI-assisted decisions (i.e., ${dataForContext.decisionQuestion}) are effective in providing the rationales on a decision.                     The survey consists of four parts:                     <ul style='font-size: 1.1rem'>                    <li> <b>Demographic survey</b>: we will ask about basic demographic information                     <li> <b>Decision-making scenario</b>: we will illustrate a scenario on an AI-assisted decision-making context where you were given a decision based on your qualification listed in a table. </li>                    <li> <b>Explanation strategies</b>: you will read explanations on why you were given the decision in the scenario, which are written with different strategies. </li><li> <b>Rating</b>: Given the explanations, you will evaluate how those explanations are effective in multiple perspectives. </li></p>`
+                  html: `<p style='font-size: 1.3rem; font-weight: 500'>In this survey, we will ask you to evaluate different explanation strategies. This survey is designed to study how different ways of explaining AI-assisted decisions (i.e., ${dataForContext.decisionQuestion}) are effective in providing the rationales on a decision.                     The survey consists of four parts:                     <ul style='font-size: 1.1rem'>                    <li> <b>Demographic survey</b>: we will ask about basic demographic information                     <li> <b>Decision-making scenario</b>: we will illustrate a scenario on an AI-assisted decision-making context where you were given a decision based on your qualifications listed in a table. </li>                    <li> <b>Explanation strategies</b>: you will read explanations on why you were given the decision in the scenario, which are written with different strategies. </li><li> <b>Rating</b>: Given the explanations, you will evaluate how those explanations are effective in multiple perspectives. </li></p>`
                 }
               ]
             }
@@ -169,7 +169,7 @@ function App() {
                 {
                   type: "html",
                   name: "introSection2",
-                  html: "<h3 style='text-align: left'>In this section, we will ask you to vividly imagine a decision-making situation. We will 1) illustrate a scenario on a AI-assisted decision-making context where you were given a decision and 2) list your status on which the decision was made by the AI system. Please answer the following questions based on your perception on the given scenario and the state of your thinking process.</h3>"
+                  html: "<h3 style='text-align: left'>In this section, we will ask you to vividly imagine a decision-making situation. We will 1) illustrate a scenario on a AI-assisted decision-making context where you were given a decision and 2) list your status on which the decision was made by the AI system. Please answer the following questions based on your perception of the given scenario and the state of your thinking process.</h3>"
                 }
               ]
             },
@@ -234,7 +234,7 @@ function App() {
                 },
                 {
                   value: "professional",
-                  text: "Professional (I think the situation requires me significant domain knowledge to understand it)"
+                  text: "Professional (I think the situation requires significant domain knowledge to understand it)"
                 },
                 {
                   value: "timely",
@@ -280,7 +280,7 @@ function App() {
                 },
                 {
                   value: "ability",
-                  text: "In the situation, I think I have the required domain knowledge to understand the information regarding your status used in this decision."
+                  text: "In the situation, I think I have the required domain knowledge to understand the information regarding my status used in this decision."
                 }
               ]
             }
@@ -298,7 +298,7 @@ function App() {
                 {
                   type: "html",
                   name: "income_intro",
-                  html: "<h3 style='text-align: left'>Assume that the system had an interface to you were given an explanation upon your request for asking the rationale behind the decision. The following choices are a set of possible explanations with different strategies. (Read through the explanations in this page. You will evaluate these explanations in the next pages.)</h3>"
+                  html: "<h3 style='text-align: left'>Assume that the system had an interface where you were given an explanation upon your request for the rationale behind the decision. The following choices are a set of possible explanations with different strategies. (Read through the explanations in this page. You will evaluate these explanations in the next pages.)</h3>"
                 }
               ]
             },
@@ -468,7 +468,7 @@ function App() {
                     {
                       type: "ranking",
                       name: "question3",
-                      title: "How did each explanation enhance my understanding of why you were given the decision? Rank the explanations in order from most to least beneficial.",
+                      title: "How did each explanation enhance your understanding of why you were given the decision? Rank the explanations in order from most to least beneficial.",
                       isRequired: true,
                       choices: [
                         {
@@ -579,7 +579,7 @@ function App() {
                     {
                       type: "ranking",
                       name: "sufficientlyDetailedAndComplete",
-                      title: "The explanation is sufficient detailed and complete (Rank the explanations in order from most to least detailed and complete).",
+                      title: "The explanation is sufficiently detailed and complete (Rank the explanations in order from most to least detailed and complete).",
                       isRequired: true,
                       choices: [
                         "Explanation A",
@@ -640,7 +640,8 @@ function App() {
                     {
                       type: "comment",
                       name: "feedback",
-                      title: "Please leave your feedback on the survey if any (We appreciate for helping us improve the design of the survey)."
+                      title: "Do you have any feedback on questions, structure or others on the survey? if so, how can we improve it? (We appreciate for helping us improve the design of the survey).",
+                      isRequired: true
                     },
                     {
                       type: "comment",

@@ -104,6 +104,9 @@ const Main = ({
       classes.content += " width90";
       classes.cell += " minWidth100px padding5px"
       classes.headerCell += " maxWidth50px padding5px"
+    } else if (options.question.getType() == 'comment') {
+      classes.root += " maxWidth300px" 
+      console.log(options.question.getType())
     }
   });
 

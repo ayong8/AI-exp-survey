@@ -87,6 +87,10 @@
   max-width: 40%;
 }
 
+.maxWidth300px {
+  max-width: 300px;
+}
+
 .minWidth100px {
   min-width: 100px !important;
 }
