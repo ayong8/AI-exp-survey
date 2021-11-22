@@ -646,12 +646,14 @@ function App() {
                     {
                       type: "comment",
                       name: "courseInfoForPilot",
-                      title: "How did you hear about this survey? (course or affiliation)"
+                      isRequired: true,
+                      title: "How did you hear about this survey? (course/project/affiliation) (Type in 'None' if you don't want to answer)"
                     },
                     {
                       type: "comment",
                       name: "personalInfoForPilot",
-                      title: "Please leave your name if you want to let us know your participation."
+                      isRequired: true,
+                      title: "Please leave your name if you want to let us know your participation. (Type in 'None' if you don't want to answer)"
                     },
                   ]
                 }
