@@ -102,7 +102,7 @@ const Main = ({
       classes.item += " displayBlock paddingLeft50 maxWidth40 textAlignLeft";
     } else if (options.question.getType() == 'matrix') {
       classes.content += " width90";
-      classes.cell += " minWidth100px padding5px"
+      classes.cell += " minWidth20px padding5px"
       classes.headerCell += " maxWidth50px padding5px"
     } else if (options.question.getType() == 'comment') {
       classes.root += " maxWidth300px" 

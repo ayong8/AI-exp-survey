@@ -38,7 +38,7 @@ function App() {
                 {
                   type: "html",
                   name: "introSection1",
-                  html: `<p style='font-size: 1.3rem; font-weight: 500'>In this survey, we will ask you to evaluate different explanation strategies. This survey is designed to study how different ways of explaining AI-assisted decisions (i.e., ${dataForContext.decisionQuestion}) are effective in providing the rationales on a decision.                     The survey consists of four parts:                     <ul style='font-size: 1.1rem'>                    <li> <b>Demographic survey</b>: we will ask about basic demographic information                     <li> <b>Decision-making scenario</b>: we will illustrate a scenario on an AI-assisted decision-making context where you were given a decision based on your qualifications listed in a table. </li>                    <li> <b>Explanation strategies</b>: you will read explanations on why you were given the decision in the scenario, which are written with different strategies. </li><li> <b>Rating</b>: Given the explanations, you will evaluate how those explanations are effective in multiple perspectives. </li></p>`
+                  html: `<p style='font-size: 1.3rem; font-weight: 500;'>In this survey, we will ask you to evaluate different explanation strategies. This survey is designed to study how different ways of explaining AI-assisted decisions (i.e., ${dataForContext.decisionQuestion}) are effective in providing the rationales on a decision.                     The survey consists of four parts:                     <ul style='font-size: 1.1rem'>                    <li> <b>Demographic survey</b>: we will ask about basic demographic information                     <li> <b>Decision-making scenario</b>: we will illustrate a scenario on an AI-assisted decision-making context where you were given a decision based on your qualifications listed in a table. </li>                    <li> <b>Explanation strategies</b>: you will read explanations on why you were given the decision in the scenario, which are written with different strategies. </li><li> <b>Rating</b>: Given the explanations, you will evaluate how those explanations are effective in multiple perspectives. </li></p>`
                 }
               ]
             }
@@ -101,7 +101,9 @@ function App() {
                 "Trade/technical/vocational training Associate degree",
                 "Bachelor's degree",
                 "Master's degree",
-                "Professional degree Doctorate degree, or Prefer not to say"
+                "Doctorate degree",
+                "Professional degree",
+                "Prefer not to say"
               ],
               hasNone: true
             },
@@ -245,7 +247,7 @@ function App() {
             {
               type: "matrix",
               name: "attribution",
-              title: "Given the situation where you are being notified of AI-assisted decision, how do you perceive yourself regarding the following statement?",
+              title: "Given the situation where you are being provided an AI-assisted decision, rate the following statements.",
               isRequired: true,
               columns: [
                 {
@@ -272,15 +274,15 @@ function App() {
               rows: [
                 {
                   value: "motivation",
-                  text: `In the situation, I feel it is necessary for me to deliberatively think and investigate ${dataForContext.decisionText}.`
+                  text: `I feel it is necessary for me to deliberately think and investigate ${dataForContext.decisionText}.`
                 },
                 {
                   value: "opportunity",
-                  text: `In the situation, I feel I have enough time and resources to deliberatively think and investigate ${dataForContext.decisionText}.`
+                  text: `I feel I have enough time and resources to deliberately think and investigate ${dataForContext.decisionText}.`
                 },
                 {
                   value: "ability",
-                  text: "In the situation, I think I have the required domain knowledge to understand the information regarding my status used in this decision."
+                  text: "I feel I have the required domain knowledge to understand the information regarding my status used in this decision."
                 }
               ]
             }
@@ -298,7 +300,7 @@ function App() {
                 {
                   type: "html",
                   name: "income_intro",
-                  html: "<h3 style='text-align: left'>Assume that the system had an interface where you were given an explanation upon your request for the rationale behind the decision. The following choices are a set of possible explanations with different strategies. (Read through the explanations in this page. You will evaluate these explanations in the next pages.)</h3>"
+                  html: "<h3 style='text-align: left'>Assume that the system explained the rationale behind the decision upon your request. The following choices are a set of possible types of explanations (Please read through the explanations. You will evaluate them in the next pages.)</h3>"
                 }
               ]
             },
@@ -310,30 +312,30 @@ function App() {
                 "Explanation"
               ],
               rows: [
-                "explanation A",
-                "explanation B",
-                "explanation C",
-                "explanation D",
-                "explanation E",
-                "explanation F"
+                "A",
+                "B",
+                "C",
+                "D",
+                "E",
+                "F"
               ],
               cells: {
-                "explanation A": {
+                "A": {
                   Explanation: "Your credit history indicates there was no delay in paying off in the past, your credit score is 750, which is categorized as good, and you have a credit amounting to $10,000. The existing checking account has a balance of more than $20,000. You are female and single at the age of 45. You were denied a loan because you live at a monthly rent and are unemployed and have no annual income for now."
                 },
-                "explanation B": {
+                "B": {
                   Explanation: "You could have been granted a loan if you had been employed with an annual income more than $40,000. You have no annual income and were therefore denied a loan."
                 },
-                "explanation C": {
+                "C": {
                   Explanation: "You could have been granted a loan if you had been employed with an annual income more than $40,000. You have no annual income and were therefore denied a loan."
                 },
-                "explanation D": {
+                "D": {
                   Explanation: "A contrastive case is that of Person A. Person A was granted a loan since she was employed with an annual income of $32,500 more than you. You have no annual income and we therefore cannot grant you a loan."
                 },
-                "explanation E": {
+                "E": {
                   Explanation: "The most similar case that was denied a loan is that of Person B. Person B’s credit history indicates there was no delay in paying off loans in the past and they have a credit score of 600, which is categorized as not good, with credit amounting to $9,000. Their existing checking account has a balance of more than $20,000. Therefore, they were denied a loan. Your credit history indicates that there was a delay in paying off loans in the past and you have a credit score of 750, which is categorized as good, but you are unemployed with no annual income for now. Therefore, you have been denied a loan."
                 },
-                "explanation F": {
+                "F": {
                   Explanation: "Compared to your case, the most typical (average) case B who was denied a loan, has a lower credit score by 100, which is categorized as not good, but has a credit amounting to $1,000, and is single. You have a credit score of 750, which is categorized as good, but you have credit amounting to $9,000 and are unemployed and single. Therefore, you have been denied a loan."
                 }
               }
@@ -376,47 +378,47 @@ function App() {
                   ],
                   rows: [
                     {
-                      value: "explanation A",
+                      value: "A",
                       text: ""
                     },
                     {
-                      value: "explanation B",
+                      value: "B",
                       text: ""
                     },
                     {
-                      value: "explanation C",
+                      value: "C",
                       text: ""
                     },
                     {
-                      value: "explanation D",
+                      value: "D",
                       text: ""
                     },
                     {
-                      value: "explanation E",
+                      value: "E",
                       text: ""
                     },
                     {
-                      value: "explanation F",
+                      value: "F",
                       text: ""
                     }
                   ],
                   cells: {
-                    "explanation A": {
+                    "A": {
                       Explanation: "Your credit history indicates there was no delay in paying off in the past, your credit score is 750, which is categorized as good, and you have a credit amounting to $10,000. The existing checking account has a balance of more than $20,000. You are female and single at the age of 45. You were denied a loan because you live at a monthly rent and are unemployed and have no annual income for now."
                     },
-                    "explanation B": {
+                    "B": {
                       Explanation: "You could have been granted a loan if you had been employed with an annual income more than $40,000. You have no annual income and were therefore denied a loan."
                     },
-                    "explanation C": {
+                    "C": {
                       Explanation: "You could have been granted a loan if you had been employed with an annual income more than $40,000. You have no annual income and were therefore denied a loan."
                     },
-                    "explanation D": {
+                    "D": {
                       Explanation: "A contrastive case is that of Person A. Person A was granted a loan since she was employed with an annual income of $32,500 more than you. You have no annual income and we therefore cannot grant you a loan."
                     },
-                    "explanation E": {
+                    "E": {
                       Explanation: "The most similar case that was denied a loan is that of Person B. Person B’s credit history indicates there was no delay in paying off loans in the past and they have a credit score of 600, which is categorized as not good, with credit amounting to $9,000. Their existing checking account has a balance of more than $20,000. Therefore, they were denied a loan. Your credit history indicates that there was a delay in paying off loans in the past and you have a credit score of 750, which is categorized as good, but you are unemployed with no annual income for now. Therefore, you have been denied a loan."
                     },
-                    "explanation F": {
+                    "F": {
                       Explanation: "Compared to your case, the most typical (average) case B who was denied a loan, has a lower credit score by 100, which is categorized as not good, but has a credit amounting to $1,000, and is single. You have a credit score of 750, which is categorized as good, but you have credit amounting to $9,000 and are unemployed and single. Therefore, you have been denied a loan."
                     }
                   }
@@ -428,7 +430,7 @@ function App() {
                     {
                       type: "rating",
                       name: "question1",
-                      title: "How difficult is the information covered in the explanations overall for you to understand? (from 1 (very easy) to 5 (very difficult))",
+                      title: "How difficult is the information covered in the explanations overall for you to understand? (Rank them in order from most to least difficult)",
                       isRequired: true,
                       minRateDescription: "",
                       maxRateDescription: ""
@@ -436,64 +438,64 @@ function App() {
                     {
                       type: "ranking",
                       name: "question2",
-                      title: "How difficult is each explanation for you to distinguish important and unimportant information for your decision-making from these explanations? Rank the explanations in order from most to least difficulty (by dragging up and down the items).",
+                      title: "How difficult is each For you to distinguish important and unimportant information for your decision-making from these explanations? (Rank them in order from most to least difficult, by dragging up and down the items)",
                       isRequired: true,
                       choices: [
                         {
-                          value: "Explanation A",
-                          text: "Explanation A"
+                          value: "A",
+                          text: "A"
                         },
                         {
-                          value: "Explanation B",
-                          text: "Explanation B"
+                          value: "B",
+                          text: "B"
                         },
                         {
-                          value: "Explanation C",
-                          text: "Explanation C"
+                          value: "C",
+                          text: "C"
                         },
                         {
-                          value: "Explanation D",
-                          text: "Explanation D"
+                          value: "D",
+                          text: "D"
                         },
                         {
-                          value: "Explanation E",
-                          text: "Explanation E"
+                          value: "E",
+                          text: "E"
                         },
                         {
-                          value: "Explanation F",
-                          text: "Explanation F"
+                          value: "F",
+                          text: "F"
                         }
                       ]
                     },
                     {
                       type: "ranking",
                       name: "question3",
-                      title: "How did each explanation enhance your understanding of why you were given the decision? Rank the explanations in order from most to least beneficial.",
+                      title: "How did each Enhance your understanding of why you were given the decision? (Rank the explanations in order from most to least beneficial)",
                       isRequired: true,
                       choices: [
                         {
-                          value: "Explanation A",
-                          text: "Explanation A"
+                          value: "A",
+                          text: "A"
                         },
                         {
-                          value: "Explanation B",
-                          text: "Explanation B"
+                          value: "B",
+                          text: "B"
                         },
                         {
-                          value: "Explanation C",
-                          text: "Explanation C"
+                          value: "C",
+                          text: "C"
                         },
                         {
-                          value: "Explanation D",
-                          text: "Explanation D"
+                          value: "D",
+                          text: "D"
                         },
                         {
-                          value: "Explanation E",
-                          text: "Explanation E"
+                          value: "E",
+                          text: "E"
                         },
                         {
-                          value: "Explanation F",
-                          text: "Explanation F"
+                          value: "F",
+                          text: "F"
                         }
                       ]
                     }
@@ -515,35 +517,35 @@ function App() {
                 {
                   type: "matrix",
                   name: "explanationDisplay2",
-                  title: "Given these explanations, please rank them based on your preferences regarding the questions.",
+                  title: "Given these explanations, please rank them regarding the questions on the right.",
                   columns: [
                     "Explanation"
                   ],
                   rows: [
-                    "explanation A",
-                    "explanation B",
-                    "explanation C",
-                    "explanation D",
-                    "explanation E",
-                    "explanation F"
+                    "A",
+                    "B",
+                    "C",
+                    "D",
+                    "E",
+                    "F"
                   ],
                   cells: {
-                    "explanation A": {
+                    "A": {
                       Explanation: "Your credit history indicates there was no delay in paying off in the past, your credit score is 750, which is categorized as good, and you have a credit amounting to $10,000. The existing checking account has a balance of more than $20,000. You are female and single at the age of 45. You were denied a loan because you live at a monthly rent and are unemployed and have no annual income for now."
                     },
-                    "explanation B": {
+                    "B": {
                       Explanation: "You could have been granted a loan if you had been employed with an annual income more than $40,000. You have no annual income and were therefore denied a loan."
                     },
-                    "explanation C": {
+                    "C": {
                       Explanation: "You could have been granted a loan if you had been employed with an annual income more than $40,000. You have no annual income and were therefore denied a loan."
                     },
-                    "explanation D": {
+                    "D": {
                       Explanation: "A contrastive case is that of Person A. Person A was granted a loan since she was employed with an annual income of $32,500 more than you. You have no annual income and we therefore cannot grant you a loan."
                     },
-                    "explanation E": {
+                    "E": {
                       Explanation: "The most similar case that was denied a loan is that of Person B. Person B’s credit history indicates there was no delay in paying off loans in the past and they have a credit score of 600, which is categorized as not good, with credit amounting to $9,000. Their existing checking account has a balance of more than $20,000. Therefore, they were denied a loan. Your credit history indicates that there was a delay in paying off loans in the past and you have a credit score of 750, which is categorized as good, but you are unemployed with no annual income for now. Therefore, you have been denied a loan."
                     },
-                    "explanation F": {
+                    "F": {
                       Explanation: "Compared to your case, the most typical (average) case B who was denied a loan, has a lower credit score by 100, which is categorized as not good, but has a credit amounting to $1,000, and is single. You have a credit score of 750, which is categorized as good, but you have credit amounting to $9,000 and are unemployed and single. Therefore, you have been denied a loan."
                     }
                   }
@@ -555,15 +557,15 @@ function App() {
                     {
                       type: "ranking",
                       name: "overallPreference",
-                      title: "Which explanation do you prefer in an overall sense? Rank the explanations based on your preferences.",
+                      title: "Which explanation do you prefer in an overall sense? (Rank the explanations based on your preferences)",
                       isRequired: true,
                       choices: [
-                        "Explanation A",
-                        "Explanation B",
-                        "Explanation C",
-                        "Explanation D",
-                        "Explanation E",
-                        "Explanation F"
+                        "A",
+                        "B",
+                        "C",
+                        "D",
+                        "E",
+                        "F"
                       ]
                     },
                     {
@@ -574,62 +576,62 @@ function App() {
                     {
                       type: "html",
                       name: "introRankingExplanatoryValues",
-                      html: "<h3 style='text-align: left'>Given the explanations, please rank the explanations regarding the following statements.</h3>"
+                      html: "<h3 style='text-align: left; color: blue'>Given the explanations, please rank the following statements with first being MOST and last being LEAST.</h3>"
                     },
                     {
                       type: "ranking",
                       name: "sufficientlyDetailedAndComplete",
-                      title: "The explanation is sufficiently detailed and complete (Rank the explanations in order from most to least detailed and complete).",
+                      title: "The explanation is sufficiently detailed and complete.",
                       isRequired: true,
                       choices: [
-                        "Explanation A",
-                        "Explanation B",
-                        "Explanation C",
-                        "Explanation D",
-                        "Explanation E",
-                        "Explanation F"
+                        "A",
+                        "B",
+                        "C",
+                        "D",
+                        "E",
+                        "F"
                       ]
                     },
                     {
                       type: "ranking",
                       name: "understandable",
-                      title: "From the explanation, I have better understanding of why I was given the decision. (Rank the explanations in order from most to least understandable).",
+                      title: "The explanation gives me a better understanding of why I was given the decision.",
                       isRequired: true,
                       choices: [
-                        "Explanation A",
-                        "Explanation B",
-                        "Explanation C",
-                        "Explanation D",
-                        "Explanation E",
-                        "Explanation F"
+                        "A",
+                        "B",
+                        "C",
+                        "D",
+                        "E",
+                        "F"
                       ]
                     },
                     {
                       type: "ranking",
                       name: "trust",
-                      title: "The explanation lets me trust the system (Rank the explanations in order from most to least trustworthy).",
+                      title: "The explanation lets me trust the decision and how the system works.",
                       isRequired: true,
                       choices: [
-                        "Explanation A",
-                        "Explanation B",
-                        "Explanation C",
-                        "Explanation D",
-                        "Explanation E",
-                        "Explanation F"
+                        "A",
+                        "B",
+                        "C",
+                        "D",
+                        "E",
+                        "F"
                       ]
                     },
                     {
                       type: "ranking",
                       name: "useful",
-                      title: "The explanation is actionable, that is, it helps me know what further actions or decisions I can make (Rank the explanations in order from most to least actionable).",
+                      title: "​​The explanation is actionable, that is, it helps me know what further actions or decisions I can make.",
                       isRequired: true,
                       choices: [
-                        "Explanation A",
-                        "Explanation B",
-                        "Explanation C",
-                        "Explanation D",
-                        "Explanation E",
-                        "Explanation F"
+                        "A",
+                        "B",
+                        "C",
+                        "D",
+                        "E",
+                        "F"
                       ]
                     },
                     {
@@ -640,7 +642,7 @@ function App() {
                     {
                       type: "comment",
                       name: "feedback",
-                      title: "Do you have any feedback on questions, structure or others on the survey? if so, how can we improve it? (We appreciate for helping us improve the design of the survey).",
+                      title: "Do you have any feedback on questions, structure or others on the survey? if so, how can we improve it? (We appreciate for helping us improve the design of the survey)",
                       isRequired: true
                     },
                     {
@@ -718,9 +720,8 @@ function App() {
   }
   
   const assignRandomEsForMatrix = (q, shuffledEs) => {
-    console.log('qq in random: ', q);
     ['A', 'B', 'C', 'D', 'E', 'F'].map((idx, i) => {
-      q.cells['explanation ' + idx]['Explanation'] = shuffledEs[i].exp;
+      q.cells[idx]['Explanation'] = shuffledEs[i].exp;
     })
     
     return q;
