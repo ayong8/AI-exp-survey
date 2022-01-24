@@ -1,4 +1,8 @@
-import _, { shuffle } from 'lodash';
+import { BrowserRouter as Router,
+  Routes,
+  Route,
+  useRoutes, } from "react-router-dom";
+import _, { random, shuffle } from 'lodash';
 
 import "./App.css";
 import Main from "./components/Main";
@@ -6,12 +10,6 @@ import data from './data/data.json';
 
 
 function App() {
-  const setting = {
-    context: 'loan',
-    decision: 'negative',
-    agent: 'human',
-  }
-
   const expTypes = [
     'complete',
     'counterfactual',
@@ -21,7 +19,7 @@ function App() {
     'case_based_hetero'
   ];
 
-  const getAllContents = (dataForContext) => {
+  const getContents = (dataForContext) => {
     return {
       title:
         "Explanation strategies",
@@ -38,10 +36,10 @@ function App() {
                 {
                   type: "html",
                   name: "introSection1",
-                  html: `<p style='font-size: 1.3rem; font-weight: 500;'>In this survey, we will ask you to evaluate different explanation strategies. This survey is designed to study how different ways of explaining AI-assisted decisions (i.e., ${dataForContext.decisionQuestion}) are effective in providing the rationales on a decision.                     The survey consists of four parts:                     <ul style='font-size: 1.1rem'>                    <li> <b>Demographic survey</b>: we will ask about basic demographic information                     <li> <b>Decision-making scenario</b>: we will illustrate a scenario on an AI-assisted decision-making context where you were given a decision based on your qualifications listed in a table. </li>                    <li> <b>Explanation strategies</b>: you will read explanations on why you were given the decision in the scenario, which are written with different strategies. </li><li> <b>Rating</b>: Given the explanations, you will evaluate how those explanations are effective in multiple perspectives. </li></p>`
+                  html: `<p style='font-size: 1rem; font-weight: 500; text-align: right; color: gray '>(${dataForContext.contextId})</p><p style='font-size: 1.3rem; font-weight: 500;'>In this survey, we will ask you to evaluate different types of explanations. This survey is designed to study how different ways of explaining AI-assisted decisions (i.e., ${dataForContext.decisionQuestion}) are effective in providing the rationales on a decision.                     The survey consists of four parts:                     <ul style='font-size: 1.1rem'>                    <li> <b>Demographic survey</b>: we will ask about basic demographic information                     <li> <b>Decision-making scenario</b>: we will illustrate a scenario on an AI-assisted decision-making context where you were given a decision based on your qualifications listed in a table. </li>                    <li> <b>Possible explanations</b>: you will read explanations on why you were given the decision in the scenario, which are written with different strategies. </li><li> <b>Rating</b>: Given the explanations, you will evaluate how those explanations are effective in multiple perspectives. </li></p>`
                 }
               ]
-            }
+            },
           ],
           navigationTitle: "Introduction"
         },
@@ -60,25 +58,46 @@ function App() {
               ]
             },
             {
+              type: "comment",
+              name: "userId",
+              title: "Please enter your Prolific ID.",
+              isRequired: false
+            },
+            {
               type: "radiogroup",
               name: "gender",
               title: "How would you describe your gender identity?",
-              isRequired: true,
+              isRequired: false,
               choices: [
                 "Male",
                 "Female",
                 "Non-binary",
-                "Others or prefer not to say"
+                "Other / prefer not to say"
               ],
               colCount: 4
+            },
+            {
+              type: "radiogroup",
+              name: "age",
+              title: "What is your age?",
+              isRequired: false,
+              choices: [
+                "18-24 years old",
+                "25-34 years old",
+                "35-44 years old",
+                "45-54 years old",
+                "55-64 years old",
+                "65 years old or above",
+              ],
+              colCount: 6
             },
             {
               type: "checkbox",
               name: "ethnicity",
               title: "What categories describe you? Select all choices that apply.",
-              isRequired: true,
+              isRequired: false,
               choices: [
-                "American Indian or Alaska Native",
+                "Native American or Alaskan Native",
                 "Asian",
                 "Black or African American",
                 "Hispanic or Latino",
@@ -92,10 +111,10 @@ function App() {
               type: "radiogroup",
               name: "education",
               title: "What is the highest degree of level of school you have completed?",
-              isRequired: true,
+              isRequired: false,
               choices: [
                 "No schooling completed",
-                "To 8th grade",
+                "Middle school",
                 "Some high school, no diploma",
                 "High school graduate, diploma or the equivalent (for example: GED) Some college credit, no degree",
                 "Trade/technical/vocational training Associate degree",
@@ -108,10 +127,25 @@ function App() {
               hasNone: true
             },
             {
+              type: "radiogroup",
+              name: "occupation",
+              title: "How would you describe your occupation?",
+              isRequired: false,
+              choices: [
+                "Students",
+                "Finance & economics",
+                "Medical & healthcare",
+                "Transportation services, drivers",
+                "Software engineers, AI practitioners",
+                "Others"
+              ],
+              hasNone: true
+            },
+            {
               type: "matrix",
               name: "decisionMakingStyle",
               title: "How do you describe your decision-making styles?",
-              isRequired: true,
+              isRequired: false,
               columns: [
                 {
                   value: 1,
@@ -206,7 +240,7 @@ function App() {
               type: "matrix",
               name: "situationProperty",
               title: "How do you perceive the given situation and decision regarding the properties listed below?",
-              isRequired: true,
+              isRequired: false,
               columns: [
                 {
                   value: 1,
@@ -248,7 +282,7 @@ function App() {
               type: "matrix",
               name: "attribution",
               title: "Given the situation where you are being provided an AI-assisted decision, rate the following statements.",
-              isRequired: true,
+              isRequired: false,
               columns: [
                 {
                   value: 1,
@@ -300,16 +334,16 @@ function App() {
                 {
                   type: "html",
                   name: "income_intro",
-                  html: "<h3 style='text-align: left'>Assume that the system explained the rationale behind the decision upon your request. The following choices are a set of possible types of explanations (Please read through the explanations. You will evaluate them in the next pages.)</h3>"
+                  html: "<h3 style='text-align: left'>Assume the system shows one of the following 6 possible explanations to explain the rationale behind the AI decision. Please read each of them and evaluate the explanation through questions in the next pages.</h3>"
                 }
               ]
             },
             {
               type: "matrix",
               name: "explanationStrategies",
-              title: "Explanation strategies",
+              title: "Possible explanations",
               columns: [
-                "Explanation"
+                " "
               ],
               rows: [
                 "A",
@@ -321,22 +355,22 @@ function App() {
               ],
               cells: {
                 "A": {
-                  Explanation: "Your credit history indicates there was no delay in paying off in the past, your credit score is 750, which is categorized as good, and you have a credit amounting to $10,000. The existing checking account has a balance of more than $20,000. You are female and single at the age of 45. You were denied a loan because you live at a monthly rent and are unemployed and have no annual income for now."
+                  " ": `${dataForContext.explanations.complete}`
                 },
                 "B": {
-                  Explanation: "You could have been granted a loan if you had been employed with an annual income more than $40,000. You have no annual income and were therefore denied a loan."
+                  " ": `${dataForContext.explanations.counterfactual}`
                 },
                 "C": {
-                  Explanation: "You could have been granted a loan if you had been employed with an annual income more than $40,000. You have no annual income and were therefore denied a loan."
+                  " ": `${dataForContext.explanations.contrastive_o}`
                 },
                 "D": {
-                  Explanation: "A contrastive case is that of Person A. Person A was granted a loan since she was employed with an annual income of $32,500 more than you. You have no annual income and we therefore cannot grant you a loan."
+                  " ": `${dataForContext.explanations.contrastive_t}`
                 },
                 "E": {
-                  Explanation: "The most similar case that was denied a loan is that of Person B. Person B’s credit history indicates there was no delay in paying off loans in the past and they have a credit score of 600, which is categorized as not good, with credit amounting to $9,000. Their existing checking account has a balance of more than $20,000. Therefore, they were denied a loan. Your credit history indicates that there was a delay in paying off loans in the past and you have a credit score of 750, which is categorized as good, but you are unemployed with no annual income for now. Therefore, you have been denied a loan."
+                  " ": `${dataForContext.explanations.case_based_homo}`
                 },
                 "F": {
-                  Explanation: "Compared to your case, the most typical (average) case B who was denied a loan, has a lower credit score by 100, which is categorized as not good, but has a credit amounting to $1,000, and is single. You have a credit score of 750, which is categorized as good, but you have credit amounting to $9,000 and are unemployed and single. Therefore, you have been denied a loan."
+                  " ": `${dataForContext.explanations.case_based_hetero}`
                 }
               }
             },
@@ -346,7 +380,7 @@ function App() {
               title: "After reading the scenario, given"
             }
           ],
-          navigationTitle: "Explanation strategies"
+          navigationTitle: "Possible explanations"
         },
         {
           name: "page4",
@@ -369,10 +403,10 @@ function App() {
                 {
                   type: "matrix",
                   name: "explanationDisplay1",
-                  title: "Explanation strategies",
+                  title: "Possible explanations",
                   columns: [
                     {
-                      value: "Explanation",
+                      value: " ",
                       maxWidth: '30%'
                     }
                   ],
@@ -404,22 +438,22 @@ function App() {
                   ],
                   cells: {
                     "A": {
-                      Explanation: "Your credit history indicates there was no delay in paying off in the past, your credit score is 750, which is categorized as good, and you have a credit amounting to $10,000. The existing checking account has a balance of more than $20,000. You are female and single at the age of 45. You were denied a loan because you live at a monthly rent and are unemployed and have no annual income for now."
+                      " ": `${dataForContext.explanations.complete}`
                     },
                     "B": {
-                      Explanation: "You could have been granted a loan if you had been employed with an annual income more than $40,000. You have no annual income and were therefore denied a loan."
+                      " ": `${dataForContext.explanations.counterfactual}`
                     },
                     "C": {
-                      Explanation: "You could have been granted a loan if you had been employed with an annual income more than $40,000. You have no annual income and were therefore denied a loan."
+                      " ": `${dataForContext.explanations.contrastive_o}`
                     },
                     "D": {
-                      Explanation: "A contrastive case is that of Person A. Person A was granted a loan since she was employed with an annual income of $32,500 more than you. You have no annual income and we therefore cannot grant you a loan."
+                      " ": `${dataForContext.explanations.contrastive_t}`
                     },
                     "E": {
-                      Explanation: "The most similar case that was denied a loan is that of Person B. Person B’s credit history indicates there was no delay in paying off loans in the past and they have a credit score of 600, which is categorized as not good, with credit amounting to $9,000. Their existing checking account has a balance of more than $20,000. Therefore, they were denied a loan. Your credit history indicates that there was a delay in paying off loans in the past and you have a credit score of 750, which is categorized as good, but you are unemployed with no annual income for now. Therefore, you have been denied a loan."
+                      " ": `${dataForContext.explanations.case_based_homo}`
                     },
                     "F": {
-                      Explanation: "Compared to your case, the most typical (average) case B who was denied a loan, has a lower credit score by 100, which is categorized as not good, but has a credit amounting to $1,000, and is single. You have a credit score of 750, which is categorized as good, but you have credit amounting to $9,000 and are unemployed and single. Therefore, you have been denied a loan."
+                      " ": `${dataForContext.explanations.case_based_hetero}`
                     }
                   }
                 },
@@ -431,15 +465,15 @@ function App() {
                       type: "rating",
                       name: "question1",
                       title: "How difficult is the information covered in the explanations overall for you to understand? (Rank them in order from most to least difficult)",
-                      isRequired: true,
+                      isRequired: false,
                       minRateDescription: "",
                       maxRateDescription: ""
                     },
                     {
                       type: "ranking",
                       name: "question2",
-                      title: "How difficult is each For you to distinguish important and unimportant information for your decision-making from these explanations? (Rank them in order from most to least difficult, by dragging up and down the items)",
-                      isRequired: true,
+                      title: "How difficult is each explanation for you to distinguish important and unimportant information for your decision-making from these explanations? (Rank them in order from most to least difficult, by dragging up and down the items)",
+                      isRequired: false,
                       choices: [
                         {
                           value: "A",
@@ -470,8 +504,8 @@ function App() {
                     {
                       type: "ranking",
                       name: "question3",
-                      title: "How did each Enhance your understanding of why you were given the decision? (Rank the explanations in order from most to least beneficial)",
-                      isRequired: true,
+                      title: "How did each explanation enhance your understanding of why you were given the decision? (Rank the explanations in order from most to least beneficial)",
+                      isRequired: false,
                       choices: [
                         {
                           value: "A",
@@ -519,7 +553,7 @@ function App() {
                   name: "explanationDisplay2",
                   title: "Given these explanations, please rank them regarding the questions on the right.",
                   columns: [
-                    "Explanation"
+                    " "
                   ],
                   rows: [
                     "A",
@@ -531,22 +565,22 @@ function App() {
                   ],
                   cells: {
                     "A": {
-                      Explanation: "Your credit history indicates there was no delay in paying off in the past, your credit score is 750, which is categorized as good, and you have a credit amounting to $10,000. The existing checking account has a balance of more than $20,000. You are female and single at the age of 45. You were denied a loan because you live at a monthly rent and are unemployed and have no annual income for now."
+                      " ": `${dataForContext.explanations.complete}`
                     },
                     "B": {
-                      Explanation: "You could have been granted a loan if you had been employed with an annual income more than $40,000. You have no annual income and were therefore denied a loan."
+                      " ": `${dataForContext.explanations.counterfactual}`
                     },
                     "C": {
-                      Explanation: "You could have been granted a loan if you had been employed with an annual income more than $40,000. You have no annual income and were therefore denied a loan."
+                      " ": `${dataForContext.explanations.contrastive_o}`
                     },
                     "D": {
-                      Explanation: "A contrastive case is that of Person A. Person A was granted a loan since she was employed with an annual income of $32,500 more than you. You have no annual income and we therefore cannot grant you a loan."
+                      " ": `${dataForContext.explanations.contrastive_t}`
                     },
                     "E": {
-                      Explanation: "The most similar case that was denied a loan is that of Person B. Person B’s credit history indicates there was no delay in paying off loans in the past and they have a credit score of 600, which is categorized as not good, with credit amounting to $9,000. Their existing checking account has a balance of more than $20,000. Therefore, they were denied a loan. Your credit history indicates that there was a delay in paying off loans in the past and you have a credit score of 750, which is categorized as good, but you are unemployed with no annual income for now. Therefore, you have been denied a loan."
+                      " ": `${dataForContext.explanations.case_based_homo}`
                     },
                     "F": {
-                      Explanation: "Compared to your case, the most typical (average) case B who was denied a loan, has a lower credit score by 100, which is categorized as not good, but has a credit amounting to $1,000, and is single. You have a credit score of 750, which is categorized as good, but you have credit amounting to $9,000 and are unemployed and single. Therefore, you have been denied a loan."
+                      " ": `${dataForContext.explanations.case_based_hetero}`
                     }
                   }
                 },
@@ -558,7 +592,7 @@ function App() {
                       type: "ranking",
                       name: "overallPreference",
                       title: "Which explanation do you prefer in an overall sense? (Rank the explanations based on your preferences)",
-                      isRequired: true,
+                      isRequired: false,
                       choices: [
                         "A",
                         "B",
@@ -582,7 +616,7 @@ function App() {
                       type: "ranking",
                       name: "sufficientlyDetailedAndComplete",
                       title: "The explanation is sufficiently detailed and complete.",
-                      isRequired: true,
+                      isRequired: false,
                       choices: [
                         "A",
                         "B",
@@ -595,8 +629,8 @@ function App() {
                     {
                       type: "ranking",
                       name: "understandable",
-                      title: "The explanation gives me a better understanding of why I was given the decision.",
-                      isRequired: true,
+                      title: "The explanation helps me better understand the reason behind the AI decision.",
+                      isRequired: false,
                       choices: [
                         "A",
                         "B",
@@ -609,8 +643,8 @@ function App() {
                     {
                       type: "ranking",
                       name: "trust",
-                      title: "The explanation lets me trust the decision and how the system works.",
-                      isRequired: true,
+                      title: "The explanation makes me trust the AI system more.",
+                      isRequired: false,
                       choices: [
                         "A",
                         "B",
@@ -623,8 +657,8 @@ function App() {
                     {
                       type: "ranking",
                       name: "useful",
-                      title: "​​The explanation is actionable, that is, it helps me know what further actions or decisions I can make.",
-                      isRequired: true,
+                      title: "​​The explanation is actionable, that is, I can take a further action better with it based on the AI decision.",
+                      isRequired: false,
                       choices: [
                         "A",
                         "B",
@@ -637,25 +671,7 @@ function App() {
                     {
                       type: "html",
                       name: "introRankingExplanatoryValues",
-                      html: "<h3 style='text-align: left'>--- Post-survey questionnaire (optional)</h3>"
-                    },
-                    {
-                      type: "comment",
-                      name: "feedback",
-                      title: "Do you have any feedback on questions, structure or others on the survey? if so, how can we improve it? (We appreciate for helping us improve the design of the survey)",
-                      isRequired: true
-                    },
-                    {
-                      type: "comment",
-                      name: "courseInfoForPilot",
-                      isRequired: true,
-                      title: "How did you hear about this survey? (course/project/affiliation) (Type in 'None' if you don't want to answer)"
-                    },
-                    {
-                      type: "comment",
-                      name: "personalInfoForPilot",
-                      isRequired: true,
-                      title: "Please leave your name if you want to let us know your participation. (Type in 'None' if you don't want to answer)"
+                      html: "<h3 style='text-align: left; color: black'>Once you finish the survey, you will be redirected to a Prolific page to confirm your participation.</h3>"
                     },
                   ]
                 }
@@ -676,10 +692,6 @@ function App() {
     { pIdx: 4, qIdx: 1, inPanel: true, pName: 'page4', qName: 'explanationDisplay' },
     { pIdx: 5, qIdx: 0, inPanel: true, pName: 'page5', qName: 'explanationDisplay' }
   ];
-
-  let dataForContext = {};
-  let shuffledEs = [];
-  let updatedJsonAllContents = {};
   
   // For explanation matrix cells
   const updateEs = (questionsToUpdate, shuffledEs, jsonAllContents) => {
@@ -721,7 +733,7 @@ function App() {
   
   const assignRandomEsForMatrix = (q, shuffledEs) => {
     ['A', 'B', 'C', 'D', 'E', 'F'].map((idx, i) => {
-      q.cells[idx]['Explanation'] = shuffledEs[i].exp;
+      q.cells[idx][' '] = shuffledEs[i].exp;
     })
     
     return q;
@@ -729,8 +741,6 @@ function App() {
   
   const getExplanations = (dataForContext) => {
     const shuffledEIdx = _.shuffle(_.range(expTypes.length));
-    console.log('shuffledEIdx: ', shuffledEIdx)
-    console.log('dataForContext: ', dataForContext)
 
     return shuffledEIdx.map(shuffledIdx => ({
       name: expTypes[shuffledIdx], 
@@ -739,24 +749,94 @@ function App() {
     }));
   }
 
-  if (data.length > 0) {
-    dataForContext = _.filter(data, {'context': setting.context})[0];
-    console.log('allExplanations: ', data)
-    shuffledEs = getExplanations(dataForContext);  
+  const getAllContents = (dataForContext) => {
+    let shuffledEs = [];
+    let contentsForSurvey = {};
+
+    console.log('dataForContext in getAllContents: ', dataForContext)
+    shuffledEs = getExplanations(dataForContext);
+    contentsForSurvey = getContents(dataForContext);
+    contentsForSurvey = updateEs(questionsToUpdate, shuffledEs, contentsForSurvey);
+    contentsForSurvey = updateFeatures(dataForContext, contentsForSurvey);
+    contentsForSurvey = updateScenario(dataForContext, contentsForSurvey);
+
+    return [contentsForSurvey, shuffledEs];
+  }
+
+  const getDataForContext = (data, setting) => {
+    return _.filter(data, {'context': setting.context, 'decision': setting.decision})[0];
+  }
+
+  const getDataForContextRandomly = (data) => {
+    const randomIdx = _.random(0, data.length-1);
+    console.log('randomIdx for context: ', randomIdx, data[randomIdx])
+    return data[randomIdx];
   }
   
-  if (shuffledEs.length > 0) {
-    let jsonAllContents = getAllContents(dataForContext);
-    updatedJsonAllContents = updateEs(questionsToUpdate, shuffledEs, jsonAllContents);
-    updatedJsonAllContents = updateFeatures(dataForContext, updatedJsonAllContents);
-    updatedJsonAllContents = updateScenario(dataForContext, updatedJsonAllContents);
+  // Assign contexts randomly
+  if (data.length > 0) {
+    const randomContext = getDataForContextRandomly(data),
+      context1 = getDataForContext(data, {context: 'loan', decision: 'negative' }),
+      context2 = getDataForContext(data, {context: 'medical', decision: 'negative' }),
+      context3 = getDataForContext(data, {context: 'medical', decision: 'positive' }),
+      context4 = getDataForContext(data, {context: 'driving', decision: 'negative' }),
+      context5 = getDataForContext(data, {context: 'recommendation', decision: 'negative' }),
+      context6 = getDataForContext(data, {context: 'recommendation', decision: 'positive' });
+
+    const [contentsForSurveyInRandom, shuffledEsInRandom] = getAllContents(randomContext);
+    const [contentsForSurveyInContext1, shuffledEsInContext1] = getAllContents(context1);
+    const [contentsForSurveyInContext2, shuffledEsInContext2] = getAllContents(context2);
+    const [contentsForSurveyInContext3, shuffledEsInContext3] = getAllContents(context3);
+    const [contentsForSurveyInContext4, shuffledEsInContext4] = getAllContents(context4);
+    const [contentsForSurveyInContext5, shuffledEsInContext5] = getAllContents(context5);
+    const [contentsForSurveyInContext6, shuffledEsInContext6] = getAllContents(context6);
+
     return (
       <div className="App">
-        <Main 
-          contents={updatedJsonAllContents}
-          dataForContext={dataForContext}
-          shuffledEs={shuffledEs}
-        />
+        <Routes>
+          <Route exact path="/" element={
+            <Main 
+              dataForContext={randomContext}
+              contents={contentsForSurveyInRandom}
+              shuffledEs={shuffledEsInRandom}
+            />} />
+          <Route exact path="/1" element={
+            <Main 
+              dataForContext={context1}
+              contents={contentsForSurveyInContext1}
+              shuffledEs={shuffledEsInContext1}
+            />} />
+          <Route exact path="/2" element={
+            <Main 
+              dataForContext={context2}
+              contents={contentsForSurveyInContext2}
+              shuffledEs={shuffledEsInContext2}
+            />} />
+          <Route exact path="/3" element={
+            <Main 
+              dataForContext={context3}
+              contents={contentsForSurveyInContext3}
+              shuffledEs={shuffledEsInContext3}
+            />} />
+          <Route exact path="/4" element={
+            <Main 
+              dataForContext={context4}
+              contents={contentsForSurveyInContext4}
+              shuffledEs={shuffledEsInContext4}
+            />} />
+          <Route exact path="/5" element={
+            <Main 
+              dataForContext={context5}
+              contents={contentsForSurveyInContext5}
+              shuffledEs={shuffledEsInContext5}
+            />} />
+          <Route exact path="/6" element={
+            <Main 
+              dataForContext={context6}
+              contents={contentsForSurveyInContext6}
+              shuffledEs={shuffledEsInContext6}
+            />} />
+        </Routes>
       </div>
     );
   }

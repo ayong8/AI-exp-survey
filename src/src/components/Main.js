@@ -84,7 +84,7 @@ const Main = ({
     if (options.question.name == 'gender') {
       classes.column += " displayBlock paddingLeft50 maxWidth40";
       classes.item += " textAlignLeft";
-    } else if (options.question.name == 'education') {
+    } else if ((options.question.name == 'education') || (options.question.name == 'age') || (options.question.name == 'occupation')) {
       classes.item += " displayBlock paddingLeft50 maxWidth40 textAlignLeft";
     } else if (options.question.name == 'decisionMakingStyle') {
       classes.cell += " paddingLeft1";
@@ -120,6 +120,7 @@ const Main = ({
 
         clearInterval(timerId);
         result.sendResult(dataForContext.surveyPostId);
+        window.location.href = "https://app.prolific.co/submissions/complete?cc=3698D6B2";
     });
 
   return (
