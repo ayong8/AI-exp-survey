@@ -464,7 +464,7 @@ function App() {
                     {
                       type: "rating",
                       name: "question1",
-                      title: "How difficult is the information covered in the explanations overall for you to understand? (Rank them in order from most to least difficult)",
+                      title: "How difficult is the information covered in the explanations overall for you to understand? (1: least difficult, 5: most difficult)",
                       isRequired: false,
                       minRateDescription: "",
                       maxRateDescription: ""
