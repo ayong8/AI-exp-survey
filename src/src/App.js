@@ -60,14 +60,14 @@ function App() {
             {
               type: "comment",
               name: "userId",
-              title: "Please enter your Prolific ID.",
-              isRequired: false
+              title: "Please enter your Prolific ID to verify your participation.",
+              isRequired: true
             },
             {
               type: "radiogroup",
               name: "gender",
               title: "How would you describe your gender identity?",
-              isRequired: false,
+              isRequired: true,
               choices: [
                 "Male",
                 "Female",
@@ -80,7 +80,7 @@ function App() {
               type: "radiogroup",
               name: "age",
               title: "What is your age?",
-              isRequired: false,
+              isRequired: true,
               choices: [
                 "18-24 years old",
                 "25-34 years old",
@@ -95,7 +95,7 @@ function App() {
               type: "checkbox",
               name: "ethnicity",
               title: "What categories describe you? Select all choices that apply.",
-              isRequired: false,
+              isRequired: true,
               choices: [
                 "Native American or Alaskan Native",
                 "Asian",
@@ -111,7 +111,7 @@ function App() {
               type: "radiogroup",
               name: "education",
               title: "What is the highest degree of level of school you have completed?",
-              isRequired: false,
+              isRequired: true,
               choices: [
                 "No schooling completed",
                 "Middle school",
@@ -130,7 +130,7 @@ function App() {
               type: "radiogroup",
               name: "occupation",
               title: "How would you describe your occupation?",
-              isRequired: false,
+              isRequired: true,
               choices: [
                 "Students",
                 "Finance & economics",
@@ -145,7 +145,7 @@ function App() {
               type: "matrix",
               name: "decisionMakingStyle",
               title: "How do you describe your decision-making styles?",
-              isRequired: false,
+              isRequired: true,
               columns: [
                 {
                   value: 1,
@@ -240,7 +240,7 @@ function App() {
               type: "matrix",
               name: "situationProperty",
               title: "How do you perceive the given situation and decision regarding the properties listed below?",
-              isRequired: false,
+              isRequired: true,
               columns: [
                 {
                   value: 1,
@@ -282,7 +282,7 @@ function App() {
               type: "matrix",
               name: "attribution",
               title: "Given the situation where you are being provided an AI-assisted decision, rate the following statements.",
-              isRequired: false,
+              isRequired: true,
               columns: [
                 {
                   value: 1,
@@ -465,7 +465,7 @@ function App() {
                       type: "rating",
                       name: "question1",
                       title: "How difficult is the information covered in the explanations overall for you to understand? (1: least difficult, 5: most difficult)",
-                      isRequired: false,
+                      isRequired: true,
                       minRateDescription: "",
                       maxRateDescription: ""
                     },
@@ -473,7 +473,7 @@ function App() {
                       type: "ranking",
                       name: "question2",
                       title: "How difficult is each explanation for you to distinguish important and unimportant information for your decision-making from these explanations? (Rank them in order from most to least difficult, by dragging up and down the items)",
-                      isRequired: false,
+                      isRequired: true,
                       choices: [
                         {
                           value: "A",
@@ -505,7 +505,7 @@ function App() {
                       type: "ranking",
                       name: "question3",
                       title: "How did each explanation enhance your understanding of why you were given the decision? (Rank the explanations in order from most to least beneficial)",
-                      isRequired: false,
+                      isRequired: true,
                       choices: [
                         {
                           value: "A",
@@ -592,7 +592,7 @@ function App() {
                       type: "ranking",
                       name: "overallPreference",
                       title: "Which explanation do you prefer in an overall sense? (Rank the explanations based on your preferences)",
-                      isRequired: false,
+                      isRequired: true,
                       choices: [
                         "A",
                         "B",
@@ -616,7 +616,7 @@ function App() {
                       type: "ranking",
                       name: "sufficientlyDetailedAndComplete",
                       title: "The explanation is sufficiently detailed and complete.",
-                      isRequired: false,
+                      isRequired: true,
                       choices: [
                         "A",
                         "B",
@@ -630,7 +630,7 @@ function App() {
                       type: "ranking",
                       name: "understandable",
                       title: "The explanation helps me better understand the reason behind the AI decision.",
-                      isRequired: false,
+                      isRequired: true,
                       choices: [
                         "A",
                         "B",
@@ -644,7 +644,7 @@ function App() {
                       type: "ranking",
                       name: "trust",
                       title: "The explanation makes me trust the AI system more.",
-                      isRequired: false,
+                      isRequired: true,
                       choices: [
                         "A",
                         "B",
@@ -658,7 +658,7 @@ function App() {
                       type: "ranking",
                       name: "useful",
                       title: "​​The explanation is actionable, that is, I can take a further action better with it based on the AI decision.",
-                      isRequired: false,
+                      isRequired: true,
                       choices: [
                         "A",
                         "B",
@@ -684,8 +684,6 @@ function App() {
       ]
     };
   }
-
-  
 
   const questionsToUpdate = [
     { pIdx: 3, qIdx: 1, inPanel: false, pName: 'page3', qName: 'explanationStrategies' },
@@ -753,7 +751,6 @@ function App() {
     let shuffledEs = [];
     let contentsForSurvey = {};
 
-    console.log('dataForContext in getAllContents: ', dataForContext)
     shuffledEs = getExplanations(dataForContext);
     contentsForSurvey = getContents(dataForContext);
     contentsForSurvey = updateEs(questionsToUpdate, shuffledEs, contentsForSurvey);

@@ -114,13 +114,23 @@ const Main = ({
     .onComplete
     .add((result) => {
         let surveyResult = result['data'];
+
+        surveyResult['context'] = dataForContext;
+        surveyResult['explanations'] = shuffledEs;
         surveyResult['expMapping'] = shuffledEs.map(e => _.pick(e, ['idx', 'name']));
         surveyResult['timeSpent'] = timeRecord;
         result['data'] = surveyResult;
-
+        
         clearInterval(timerId);
         result.sendResult(dataForContext.surveyPostId);
+    })
+
+  survey
+    .onSendResult
+    .add((sender, options) => {
+      if (options.success) {
         window.location.href = "https://app.prolific.co/submissions/complete?cc=3698D6B2";
+      }
     });
 
   return (
