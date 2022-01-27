@@ -11,3 +11,8 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.sv-root-modern .sv-matrix__text--checked {
+  color: rgb(64, 64, 64) !important;
+  background-color: white !important;
+}

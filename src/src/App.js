@@ -36,7 +36,7 @@ function App() {
                 {
                   type: "html",
                   name: "introSection1",
-                  html: `<p style='font-size: 1rem; font-weight: 500; text-align: right; color: gray '>(${dataForContext.contextId})</p><p style='font-size: 1.3rem; font-weight: 500;'>In this survey, we will ask you to evaluate different types of explanations. This survey is designed to study how different ways of explaining AI-assisted decisions (i.e., ${dataForContext.decisionQuestion}) are effective in providing the rationales on a decision.                     The survey consists of four parts:                     <ul style='font-size: 1.1rem'>                    <li> <b>Demographic survey</b>: we will ask about basic demographic information                     <li> <b>Decision-making scenario</b>: we will illustrate a scenario on an AI-assisted decision-making context where you were given a decision based on your qualifications listed in a table. </li>                    <li> <b>Possible explanations</b>: you will read explanations on why you were given the decision in the scenario, which are written with different strategies. </li><li> <b>Rating</b>: Given the explanations, you will evaluate how those explanations are effective in multiple perspectives. </li></p>`
+                  html: `<p style='font-size: 1rem; font-weight: 500; text-align: right; color: gray '>(${dataForContext.contextId})</p><p style='font-size: 1.3rem; font-weight: 500;'>In this survey, we will ask you to evaluate different types of explanations. This survey is designed to study how different ways of explaining AI-assisted decisions are effective in providing the rationales on a decision (i.e., ${dataForContext.decisionQuestion}). This study is conducted by the researchers at the University of Pittsburgh. The survey consists of four parts:                     <ul style='font-size: 1.1rem'>                    <li> <b>Demographic survey</b>: we will ask about basic demographic information                     <li> <b>Decision-making scenario</b>: we will illustrate a scenario on an AI-assisted decision-making context where you were given a decision based on a list of information the system collected and inferred about you (assuming it's correct). </li>                    <li> <b>Possible explanations</b>: you will read explanations on why you were given the decision in the scenario, which are written with different strategies. </li><li> <b>Evaluation</b>: Given the explanations, you will evaluate how those explanations are effective in multiple perspectives. </li></ul></p> <p><i>*Your Prolific worker ID will be used to distribute payment to you and will be stored with your responses. Your participation is voluntary, and you may withdraw from the task at any time.</p>`
                 }
               ]
             },
@@ -72,9 +72,10 @@ function App() {
                 "Male",
                 "Female",
                 "Non-binary",
-                "Other / prefer not to say"
+                "Other",
+                "Prefer not to say"
               ],
-              colCount: 4
+              colCount: 5
             },
             {
               type: "radiogroup",
@@ -88,8 +89,9 @@ function App() {
                 "45-54 years old",
                 "55-64 years old",
                 "65 years old or above",
+                "Prefer not to say"
               ],
-              colCount: 6
+              colCount: 7
             },
             {
               type: "checkbox",
@@ -104,7 +106,8 @@ function App() {
                 "Native Hawaiian or Other Pacific Islander",
                 "Middle Eastern or North African",
                 "White",
-                "Some other race, ethnicity, or origin, or prefer not to say"
+                "Some other race, ethnicity, or origin",
+                "Prefer not to say"
               ]
             },
             {
@@ -122,9 +125,9 @@ function App() {
                 "Master's degree",
                 "Doctorate degree",
                 "Professional degree",
+                "None",
                 "Prefer not to say"
               ],
-              hasNone: true
             },
             {
               type: "radiogroup",
@@ -132,14 +135,14 @@ function App() {
               title: "How would you describe your occupation?",
               isRequired: true,
               choices: [
-                "Students",
                 "Finance & economics",
                 "Medical & healthcare",
                 "Transportation services, drivers",
                 "Software engineers, AI practitioners",
-                "Others"
+                "None",
+                "Others",
+                "Prefer not to say"
               ],
-              hasNone: true
             },
             {
               type: "matrix",
@@ -205,7 +208,7 @@ function App() {
                 {
                   type: "html",
                   name: "introSection2",
-                  html: "<h3 style='text-align: left'>In this section, we will ask you to vividly imagine a decision-making situation. We will 1) illustrate a scenario on a AI-assisted decision-making context where you were given a decision and 2) list your status on which the decision was made by the AI system. Please answer the following questions based on your perception of the given scenario and the state of your thinking process.</h3>"
+                  html: "<h3 style='text-align: left'>In this section, imagine a scenario where you need to make a decision where an AI system will assist your decision-making by providing recommended decisions. The scenario will be given in the gray box, followed by a list of information the system collected and inferred about you (assuming it's correct). <p> Please answer the following questions based on your perception of the given scenario and the state of your thinking process.</h3>"
                 }
               ]
             },
@@ -312,7 +315,7 @@ function App() {
                 },
                 {
                   value: "opportunity",
-                  text: `I feel I have enough time and resources to deliberately think and investigate ${dataForContext.decisionText}.`
+                  text: `I feel I have enough time and opportunity to deliberately think and investigate ${dataForContext.decisionText}.`
                 },
                 {
                   value: "ability",
@@ -605,12 +608,13 @@ function App() {
                     {
                       type: "comment",
                       name: "preferenceOpinion",
-                      title: "Please briefly describe the rationale on ranking the explanations."
+                      title: "Please briefly describe the rationale on ranking the explanations.",
+                      isRequired: true
                     },
                     {
                       type: "html",
                       name: "introRankingExplanatoryValues",
-                      html: "<h3 style='text-align: left; color: blue'>Given the explanations, please rank the following statements with first being MOST and last being LEAST.</h3>"
+                      html: "<h3 style='text-align: left; color: blue'>Given the explanations, please rank the explanations based on the following statements with first being MOST relevant and last being LEAST relevant.</h3>"
                     },
                     {
                       type: "ranking",
@@ -667,6 +671,11 @@ function App() {
                         "E",
                         "F"
                       ]
+                    },
+                    {
+                      type: "comment",
+                      name: "feedback",
+                      title: "Please leave comments if you have any feedback."
                     },
                     {
                       type: "html",
