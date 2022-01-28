@@ -99,7 +99,7 @@
     "contextIdx": "context4",
     "contextId": "DN",
     "decision": "negative",
-    "decisionText": "why the system predicted the estimated time arrival 20 minutes later than usual",
+    "decisionText": "why the system predict the estimated time arrival 20 minutes later than usual",
     "decisionQuestion": "Why did the system predicted the estimated time arrival 20 minutes later than usual?",
     "agent": "human",
     "surveyPostId": "569d983e-f2c6-40e5-9d48-e77e0a10d09d",
