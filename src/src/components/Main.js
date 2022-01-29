@@ -129,7 +129,7 @@ const Main = ({
     .onSendResult
     .add((sender, options) => {
       if (options.success) {
-        window.location.href = "https://app.prolific.co/submissions/complete?cc=3698D6B2";
+        window.location.href = "https://app.prolific.co/submissions/complete?cc=6CB630BD";
       }
     });
 
