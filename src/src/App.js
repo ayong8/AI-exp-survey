@@ -316,7 +316,7 @@ function App() {
                 },
                 {
                   value: "opportunity",
-                  text: `I feel I have enough time and opportunity to deliberately think and investigate ${dataForContext.decisionText}.`
+                  text: `I feel I have enough time to deliberately think and investigate ${dataForContext.decisionText}.`
                 },
                 {
                   value: "ability",
